@@ -1,22 +1,22 @@
 package co.edu.uniquindio.poo;
 
-
 public class Mascota {
     private String nombre;
-    private String especie;
+    private String especia;
     private String raza;
-    private int edad;
+    private String edad;
     private String identififacion;
-    private Persona propietario;
+    private String propietario;
+    private String contacto;
 
-    public Mascota(String nombre, String especie, String raza, int  edad, String identififacion,Persona propietario) {
+    public Mascota(String nombre, String especia, String raza, String edad, String identififacion, String propietario, String contacto) {
         this.nombre = nombre;
-        this.especie = especie;
+        this.especia = especia;
         this.raza = raza;
         this.edad = edad;
         this.identififacion = identififacion;
         this.propietario = propietario;
-
+        this.contacto = contacto;
     }
 
     public String getNombre() {
@@ -27,12 +27,12 @@ public class Mascota {
         this.nombre = nombre;
     }
 
-    public String getEspecie() {
-        return especie;
+    public String getEspecia() {
+        return especia;
     }
 
-    public void setEspecie(String especie) {
-        this.especie = especie;
+    public void setEspecia(String especia) {
+        this.especia = especia;
     }
 
     public String getRaza() {
@@ -43,11 +43,11 @@ public class Mascota {
         this.raza = raza;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
 
@@ -59,23 +59,33 @@ public class Mascota {
         this.identififacion = identififacion;
     }
 
-    public Persona getPropietario() {
+    public String getPropietario() {
         return propietario;
     }
 
-    public void setPropietario(Persona propietario) {
+    public void setPropietario(String propietario) {
         this.propietario = propietario;
+    }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
     }
 
     @Override
     public String toString() {
         return "Mascota{" +
                 "nombre='" + nombre + '\'' +
-                ", tipoAnimal='" + especie + '\'' +
+                ", especie='" + especia + '\'' +
                 ", raza='" + raza + '\'' +
-                ", edad=" + edad +
-                ", codigo='" + identififacion + '\'' +
-                ", propietario=" + (propietario != null ? propietario.getNombre() : "N/A") +
+                ", edad='" + edad + '\'' +
+                ", identificacion='" + identififacion + '\'' +
+                ", propietario='" + propietario + '\'' +
+                ", contacto='" + contacto + '\'' +
                 '}';
     }
 }
+
