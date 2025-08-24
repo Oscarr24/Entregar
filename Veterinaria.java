@@ -17,24 +17,8 @@ public class Veterinaria {
         return "Veterinaria{" + "nombre=" + nombre + ", nit=" + nit + '}';
     }
 
-    public static double  calcularCostoConsulta(Mascota mascota, double  costoBase){
-        double  costoTotal = costoBase;
-
-        if (mascota.getEspecie().equals("Perro")) {
-            costoTotal += 15;
-        } else if (mascota.getEspecie().equals("Gato")) {
-            costoTotal += 10;
-        }
-
-        if (mascota.getEdad() > 10) {
-            costoTotal += 20;
-        }
-
-        return costoTotal;
-    }
-
-    public boolean agregarMascota(String nombre, String especie, String raza,int edad, String identificacion,Persona propietario) {
-        Mascota newMascota = new Mascota(nombre, especie,raza,edad,identificacion,propietario);
+    public boolean agregarMascota(String nombre, String especie, String raza,String edad, String identificacion, String propietario, String Contacto) {
+        Mascota newEmpleado = new Mascota(nombre, especie,raza,edad,identificacion,propietario,Contacto);
 
         for (int i = 0; i < listMascotas.length; i++) {
             if (listMascotas[i] !=null && listMascotas[i].getNombre().equals(nombre)) {
@@ -43,7 +27,7 @@ public class Veterinaria {
         }
         for (int i = 0; i < listMascotas.length; i++) {
             if (listMascotas[i] == null){
-                listMascotas[i] = newMascota;
+                listMascotas[i] = newEmpleado;
                 return true;
             }
         }
@@ -51,17 +35,16 @@ public class Veterinaria {
 
     }
 
-    private int obtenerPosicionMascota(String nombre){
-        for(int i = 0; i < listMascotas.length; i++){
-            if(listMascotas[i] != null &&
-                    listMascotas[i].getNombre().equals(nombre)){
+    private int obtenerPosicionesmascota(String numIdentificacion) {
+        for (int i = 0; i < listMascotas.length; i++) {
+            if(listMascotas[i].getNombre().equals(nombre)){
                 return i;
             }
         }
         return -1;
     }
-    public boolean eliminarMascota(String nombre) {
-        int indexMascota = obtenerPosicionMascota(nombre);
+    public boolean eliminarEmpleado(String nombre) {
+        int indexMascota = obtenerPosicionesmascota(nombre);
 
         if (indexMascota == -1) return false;
 
@@ -69,27 +52,29 @@ public class Veterinaria {
         return true;
     }
 
-    public boolean actualizarMascota(String nombre, String especie, String raza,int edad, String identificacion, Persona propietario) {
-        int indexMascota = obtenerPosicionMascota(nombre);
+    public boolean actualizarEmpleado(String nombre, String especie, String raza,String edad, String identificacion, String propietario, String contacto) {
+        int indexMascota = obtenerPosicionesmascota(nombre);
 
         if (indexMascota == -1) return false;
 
         Mascota actualizarMascota = listMascotas[indexMascota];
 
         actualizarMascota.setNombre(nombre);
-        actualizarMascota.setEspecie(especie);
+        actualizarMascota.setEspecia(especie);
         actualizarMascota.setRaza(raza);
         actualizarMascota.setEdad(edad);
         actualizarMascota.setIdentififacion(identificacion);
         actualizarMascota.setPropietario(propietario);
+        actualizarMascota.setContacto(contacto);
 
         return true;
 
     }
 
     public Mascota obtenerMascota(String nombre) {
-        int indexMascota = obtenerPosicionMascota(nombre);
+        int indexMascota = obtenerPosicionesmascota(nombre);
         if (indexMascota == -1) return null;
+
         return listMascotas[indexMascota];
     }
 
